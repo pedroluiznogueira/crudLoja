@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class ProdutoForm {
     // referenciando o JPanel
-    public JPanel Main;
+    public JPanel ProdutoJPanel;
     // inputs
     private JTextField nomeInput;
     private JTextField precoInput;
@@ -20,15 +20,6 @@ public class ProdutoForm {
 
     // instanciando um objeto do tipo ProdutoDAO, para que à vez que eu abrir um GUI de Produto, este esteja disponível para fazer a administração dos dados
     ProdutoDAO produtoDao = new ProdutoDAO();
-
-    public static void main(String[] args) {
-        // instanciando o JFrame
-        JFrame frame = new JFrame("Loja");
-        frame.setContentPane(new ProdutoForm().Main);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 
     public ProdutoForm() {
         // Inserindo produto
