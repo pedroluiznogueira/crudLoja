@@ -51,7 +51,27 @@ public class ProdutoForm {
                     ex.printStackTrace();
                 }
             }
+        });
 
+        // Remover produto
+        excluirButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // para cada vez que eu for excluir um produto, preciso ter um produto criado para relacionar o produto certo a ser excluído no banco
+                Produto produto = new Produto();
+                // a exclusão será feita em relação ao nome que for digitado pelo usuário
+                String nomeProduto = nomeInput.getText();
+
+                // chamando a deleção do produto
+                try {
+                    produtoDao.excluirProduto(nomeProduto);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
         });
 
     }
