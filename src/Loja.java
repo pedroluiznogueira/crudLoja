@@ -7,7 +7,6 @@ public class Loja {
     // referenciando o JPanel
     private JPanel Main;
     // inputs
-    private JTextField produtoInput;
     private JTextField nomeInput;
     private JTextField precoInput;
     private JTextField quantidadeInput;
@@ -18,7 +17,7 @@ public class Loja {
     // conexao com banco
     Connection conexao;
     // variavel para tratar comandos sql
-    PreparedStatement pst;
+    PreparedStatement prepStatement;
 
     public static void main(String[] args) {
         // instanciando o JFrame
@@ -40,11 +39,23 @@ public class Loja {
             public void actionPerformed(ActionEvent e) {
                 // recebendo os input do usuário
                 String nome = nomeInput.getText();
-                String produto = produtoInput.getText();
                 String preco = precoInput.getText();
                 String quantidade = quantidadeInput.getText();
 
+                try {
+                    // realizando comandos sql repetidamente em cima do prepared statement sql
+                    prepStatement = conexao.prepareStatement("insert into produtos(nome, preco, quantidade)values(?,?,?)");
+                    // setando cada input
+                    prepStatement.setString(1, nome);
+                    prepStatement.setString(2, preco);
+                    prepStatement.setString(3, quantidade);
+                    prepStatement.executeUpdate();
+                    // informando um painel com um log informando que o procedimento foi realizado
+                    JOptionPane.showMessageDialog(null, "Inserção realizada com sucesso");
 
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
     }
