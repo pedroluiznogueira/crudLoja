@@ -42,7 +42,16 @@ public class ProdutoForm {
                 produto.setPreco(precoInput.getText());
                 produto.setQuantidade(quantidadeInput.getText());
 
+                // chamando a inserção do produto, logo é aqui que vou tratar as excessões disparadas na classe
+                try {
+                    produtoDao.incluirProduto(produto);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
             }
+
 
         });
     }

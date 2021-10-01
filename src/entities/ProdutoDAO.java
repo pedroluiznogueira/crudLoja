@@ -51,7 +51,7 @@ public class ProdutoDAO {
         // passando o driver, que dispara uma excessão
         Class.forName(driver);
         // realizando conexão, que também dispara uma excessão
-        Connection conexao = DriverManager.getConnection(url);
+        Connection conexao = DriverManager.getConnection(url, usuario, senha);
         System.out.println("Conexão com o Banco de Dados realizada com sucesso");
         return conexao;
     }
