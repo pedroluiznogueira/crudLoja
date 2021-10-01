@@ -49,4 +49,21 @@ public class ProdutoDAO extends LojaDAO {
         // mostrando um Pane se o produto for incluido
         JOptionPane.showMessageDialog(null, "Produto incluido com sucesso");
     }
+
+    // método para excluir um produto do banco
+    public void excluirProduto(String nomeProduto) throws SQLException, ClassNotFoundException {
+        // realizando conexao
+        Connection conexao = this.conectarBanco();
+
+        String deleteProduto = "delete from produtos where nome = ?";
+
+        // preparando o statement
+        PreparedStatement prepStatement = conexao.prepareStatement(deleteProduto);
+
+        // usando o statement para executar comando
+        prepStatement.setString(1, nomeProduto);
+        prepStatement.executeUpdate();
+        // log de que o produto foi deletado
+        JOptionPane.showMessageDialog(null, "Produto deletado com sucesso");
+    }
 }
