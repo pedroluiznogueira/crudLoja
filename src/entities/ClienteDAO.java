@@ -60,4 +60,17 @@ public class ClienteDAO extends LojaDAO {
 
         return cliente;
     }
+
+    public void atualizarCliente(Cliente cliente) throws SQLException, ClassNotFoundException {
+        Connection conexao = this.conectarBanco();
+
+        PreparedStatement prepStatement = conexao.prepareStatement("update cliente set email = ?, usuario = ?, senha  = ? where nome = ?");
+        prepStatement.setString(1, cliente.getEmail());
+        prepStatement.setString(2, cliente.getUsuario());
+        prepStatement.setString(3, cliente.getSenha());
+        prepStatement.setString(4, cliente.getNome());
+        prepStatement.executeUpdate();
+
+        JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso");
+    }
 }

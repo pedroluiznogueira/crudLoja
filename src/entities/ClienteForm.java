@@ -74,5 +74,26 @@ public class ClienteForm {
                 }
             }
         });
+
+        // Atualizar cliente
+        atualizarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Cliente cliente = new Cliente();
+
+                cliente.setNome(nomeInput.getText());
+                cliente.setEmail(emailInput.getText());
+                cliente.setUsuario(usuarioInput.getText());
+                cliente.setSenha(senhaInput.getText());
+
+                try {
+                    clienteDao.atualizarCliente(cliente);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 }
