@@ -38,6 +38,7 @@ public class ProdutoForm {
                 produto.setNome(nomeInput.getText());
                 produto.setPreco(precoInput.getText());
                 produto.setQuantidade(quantidadeInput.getText());
+
             }
 
         });
