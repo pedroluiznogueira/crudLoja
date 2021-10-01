@@ -20,8 +20,7 @@ public class ClienteForm {
     ClienteDAO clienteDao = new ClienteDAO();
 
     public ClienteForm() {
-
-
+        // Incluindo cliente
         incluirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -34,6 +33,40 @@ public class ClienteForm {
 
                 try {
                     clienteDao.incluirCliente(cliente);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        // Excluindo cliente
+        excluirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    clienteDao.excluirCliente(nomeInput.getText());
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        // Consultando cliente
+        consultarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Cliente cliente = clienteDao.consultarCliente(nomeInput.getText());
+
+                    cpfInput.setText(cliente.getCpf());
+                    emailInput.setText(cliente.getEmail());
+                    usuarioInput.setText(cliente.getUsuario());
+                    senhaInput.setText(cliente.getSenha());
+
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 } catch (ClassNotFoundException ex) {

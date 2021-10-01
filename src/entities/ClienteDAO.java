@@ -31,4 +31,33 @@ public class ClienteDAO extends LojaDAO {
         JOptionPane.showMessageDialog(null, "Cliente incluído com sucesso");
 
     }
+
+    public void excluirCliente(String nomeCliente) throws SQLException, ClassNotFoundException {
+        Connection conexao = conectarBanco();
+
+        PreparedStatement prepStatement = conexao.prepareStatement("delete from cliente where nome = ?");
+        prepStatement.setString(1, nomeCliente);
+        prepStatement.executeUpdate();
+
+        JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso");
+    }
+
+    public Cliente consultarCliente(String nomeCliente) throws SQLException, ClassNotFoundException {
+        Connection conexao = conectarBanco();
+        Cliente cliente = new Cliente();
+
+        PreparedStatement prepStatement = conexao.prepareStatement("select cpf, email, usuario, senha from cliente where nome = ?");
+        prepStatement.setString(1, nomeCliente);
+        ResultSet dadosCliente = prepStatement.executeQuery();
+
+        while (dadosCliente.next()) {
+            cliente.setCpf(dadosCliente.getString("cpf"));
+            cliente.setEmail(dadosCliente.getString("email"));
+            cliente.setUsuario(dadosCliente.getString("usuario"));
+            cliente.setSenha(dadosCliente.getString("senha"));
+        }
+        JOptionPane.showMessageDialog(null, "Cliente consultado com sucesso");
+
+        return cliente;
+    }
 }
