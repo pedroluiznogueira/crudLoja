@@ -6,10 +6,23 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class ProdutoDAO {
+public class ProdutoDAO extends LojaDAO {
 
     public ProdutoDAO() {
+        super();
+    }
 
+    public Connection conectarBanco() throws ClassNotFoundException, SQLException {
+        // atributos necessários para conexão
+        String driver = this.getDriver();
+        String url = this.getUrl();
+        String usuario = this.getUsuario();
+        String senha = this.getSenha();
+
+        Class.forName(driver);
+        Connection conexao = DriverManager.getConnection(url, usuario, senha);
+        System.out.println("Conexão com o Banco de Dados realizada com sucesso");
+        return conexao;
     }
 
     // método para inserir um produto no banco
@@ -35,24 +48,5 @@ public class ProdutoDAO {
         prepStatement.executeUpdate();
         // mostrando um Pane se o produto for incluido
         JOptionPane.showMessageDialog(null, "Produto incluido com sucesso");
-    }
-
-    // método para realizar a conexão com o banco de dados para cada vez que eu queira incluir um produto
-    public Connection conectarBanco() throws ClassNotFoundException, SQLException {
-        // driver
-        String driver = "com.mysql.cj.jdbc.Driver";
-        // url
-        String url = "jdbc:mysql://localhost:3306/lojinha";
-        // usuario
-        String usuario = "root";
-        // senha
-        String senha = "root";
-
-        // passando o driver, que dispara uma excessão
-        Class.forName(driver);
-        // realizando conexão, que também dispara uma excessão
-        Connection conexao = DriverManager.getConnection(url, usuario, senha);
-        System.out.println("Conexão com o Banco de Dados realizada com sucesso");
-        return conexao;
     }
 }

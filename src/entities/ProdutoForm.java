@@ -37,7 +37,7 @@ public class ProdutoForm {
                 // para cada vez que eu for incluir um produto, preciso ter um produto criado para relacionar o produto certo a ser inserido no banco
                 Produto produto = new Produto();
 
-                // settando o conteúdo do input do frame nos atributos do objeto Produto
+                // setting o conteúdo do input do frame nos atributos do objeto Produto
                 produto.setNome(nomeInput.getText());
                 produto.setPreco(precoInput.getText());
                 produto.setQuantidade(quantidadeInput.getText());
