@@ -1,6 +1,7 @@
 package entities;
 
 public class Produto {
+    private String id;
     private String nome;
     private String preco;
     private String quantidade;
@@ -30,5 +31,13 @@ public class Produto {
 
     public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

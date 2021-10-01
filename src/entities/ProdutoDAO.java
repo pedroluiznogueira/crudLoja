@@ -1,10 +1,7 @@
 package entities;
 
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ProdutoDAO extends LojaDAO {
 
@@ -65,5 +62,31 @@ public class ProdutoDAO extends LojaDAO {
         prepStatement.executeUpdate();
         // log de que o produto foi deletado
         JOptionPane.showMessageDialog(null, "Produto deletado com sucesso");
+    }
+
+    public Produto consultarProduto(String nomeProduto) throws SQLException, ClassNotFoundException {
+        // preciso armazenar os campos vindos do banco no atributos de um objeto do tipo Produto
+        Produto dadosProduto = new Produto();
+        Connection conexao = this.conectarBanco();
+
+        // comando dml select
+        String consultaProduto = "select * from produtos where nome = ?";
+        PreparedStatement prepStatement = conexao.prepareStatement(consultaProduto);
+
+        // executando comando dml
+        prepStatement.setString(1, nomeProduto);
+        // preciso chamar executeQuery, pois vai retornar um Set com os campos do banco resultantes da query
+        ResultSet dadosConsultados =  prepStatement.executeQuery();
+
+        // percorrendo o ResultSet
+        while (dadosConsultados.next()) {
+            dadosProduto.setNome(dadosConsultados.getString("nome"));
+            dadosProduto.setPreco(dadosConsultados.getString("preco"));
+            dadosProduto.setQuantidade(dadosConsultados.getString("quantidade"));
+        }
+
+        // loggando que a consulta foi bem sucedida
+        JOptionPane.showMessageDialog(null, "Produto consultado com sucesso");
+        return dadosProduto;
     }
 }
