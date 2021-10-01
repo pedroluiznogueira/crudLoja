@@ -16,6 +16,7 @@ public class ProdutoForm {
     private JButton incluirButton;
     private JButton excluirButton;
     private JButton consultarProduto;
+    private JButton atualizarProduto;
 
     // instanciando um objeto do tipo ProdutoDAO, para que à vez que eu abrir um GUI de Produto, este esteja disponível para fazer a administração dos dados
     ProdutoDAO produtoDao = new ProdutoDAO();
@@ -73,6 +74,7 @@ public class ProdutoForm {
             }
         });
 
+        // Consultar produto
         consultarProduto.addActionListener(new ActionListener() {
 
             @Override
@@ -96,5 +98,25 @@ public class ProdutoForm {
             }
         });
 
+        // Atualizar produto
+        atualizarProduto.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Produto produto = new Produto();
+
+                produto.setNome(nomeInput.getText());
+                produto.setPreco(precoInput.getText());
+                produto.setQuantidade(quantidadeInput.getText());
+
+                try {
+                    produtoDao.atualizarProduto(produto);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 }

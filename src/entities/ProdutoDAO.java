@@ -89,4 +89,28 @@ public class ProdutoDAO extends LojaDAO {
         JOptionPane.showMessageDialog(null, "Produto consultado com sucesso");
         return dadosProduto;
     }
+
+    public void atualizarProduto(Produto produto) throws SQLException, ClassNotFoundException {
+        // realizando conexao com banco
+        Connection conexao = this.conectarBanco();
+
+        // acesando os atributos do objeto que serão passados como campos para o banco de dados
+        String nome = produto.getNome();
+        String preco = produto.getPreco();
+        String quantidade = produto.getQuantidade();
+
+        // comando dml
+        String alterProduto = "update produtos set preco = ?, quantidade = ? where nome = ?";
+        PreparedStatement prepStatement = conexao.prepareStatement(alterProduto);
+
+        // realizando comando
+        prepStatement.setString(1, preco);
+        prepStatement.setString(2, quantidade);
+        prepStatement.setString(3, nome);
+        prepStatement.executeUpdate();
+
+        // loggando que a alteração foi bem sucedida
+        JOptionPane.showMessageDialog(null, "Produto alterado com sucesso");
+
+    }
 }
