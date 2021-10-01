@@ -10,14 +10,8 @@ public class ProdutoDAO extends LojaDAO {
     }
 
     public Connection conectarBanco() throws ClassNotFoundException, SQLException {
-        // atributos necessários para conexão
-        String driver = this.getDriver();
-        String url = this.getUrl();
-        String usuario = this.getUsuario();
-        String senha = this.getSenha();
-
-        Class.forName(driver);
-        Connection conexao = DriverManager.getConnection(url, usuario, senha);
+        Class.forName(this.getDriver());
+        Connection conexao = DriverManager.getConnection(this.getUrl(), this.getUsuario(), this.getSenha());
         System.out.println("Conexão com o Banco de Dados realizada com sucesso");
         return conexao;
     }

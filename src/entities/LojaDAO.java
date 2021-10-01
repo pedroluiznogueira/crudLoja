@@ -8,7 +8,6 @@ public abstract class LojaDAO {
     private String senha = "root";
 
     public LojaDAO() {
-
     }
 
     public String getDriver() {
@@ -26,5 +25,4 @@ public abstract class LojaDAO {
     public String getSenha() {
         return senha;
     }
-
 }
