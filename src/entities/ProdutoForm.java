@@ -16,6 +16,9 @@ public class ProdutoForm {
     private JButton incluirButton;
     private JButton excluirButton;
 
+    // instanciando um objeto do tipo ProdutoDAO, para que à vez que eu abrir um GUI de Produto, este esteja disponível para fazer a administração dos dados
+    ProdutoDAO produtoDao = new ProdutoDAO();
+
     public static void main(String[] args) {
         // instanciando o JFrame
         JFrame frame = new JFrame("Loja");
