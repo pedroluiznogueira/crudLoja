@@ -41,4 +41,25 @@ public class PedidoDAO extends LojaDAO {
 
         JOptionPane.showMessageDialog(null, "Pedido incluído com sucesso");
     }
+
+    public void excluirPedido(Cliente cliente) throws SQLException, ClassNotFoundException {
+        Connection conexao = this.conectarBanco();
+
+        // procura no banco de dados pelo id do cliente que fez o pedido
+        PreparedStatement prepStatementId = conexao.prepareStatement("select id from cliente where cpf = ?");
+        prepStatementId.setString(1, cliente.getCpf());
+        ResultSet dadosId = prepStatementId.executeQuery();
+
+        while (dadosId.next()) {
+            cliente.setId(dadosId.getString("id"));
+        }
+
+        JOptionPane.showMessageDialog(null, "Cliente encontrado no banco de dados");
+
+        PreparedStatement prepStatement = conexao.prepareStatement("delete from pedido where id_cliente = ?");
+        prepStatement.setString(1, cliente.getId());
+        prepStatement.executeUpdate();
+
+        JOptionPane.showMessageDialog(null, "Pedido removido com sucesso");
+    };
 }

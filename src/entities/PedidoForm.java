@@ -18,8 +18,7 @@ public class PedidoForm {
     PedidoDAO pedidoDao = new PedidoDAO();
 
     public PedidoForm() {
-
-
+        // Incluir pedido
         incluirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -36,6 +35,24 @@ public class PedidoForm {
                 } catch (ClassNotFoundException ex) {
                     ex.printStackTrace();
                 }
+            }
+        });
+        // Excluir pedido
+
+        excluirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Cliente cliente = new Cliente();
+                cliente.setCpf(cpfInput.getText());
+
+                try {
+                    pedidoDao.excluirPedido(cliente);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                } catch (ClassNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+
             }
         });
     }
