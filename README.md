@@ -8,6 +8,10 @@
 2.
 ![DiagramaUML](/img/diagrama-classes-2.jpeg?raw=true "DiagramaUML")
 
+### Diagrama do Banco de Dados
+
+1.
+![DiagramaBanco](/img/diagramaBancoDeDados.jpeg?raw=true "DiagramaBanco")
 
 ### GUIs
 
