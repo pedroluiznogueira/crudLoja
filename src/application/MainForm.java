@@ -1,6 +1,7 @@
 package application;
 
 import entities.ClienteForm;
+import entities.PedidoForm;
 import entities.ProdutoForm;
 
 import javax.swing.*;
@@ -11,6 +12,7 @@ public class MainForm {
     private JButton clienteButton;
     private JPanel MainJPanel;
     private JButton produtosButton;
+    private JButton pedidoButton;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Lojinha");
@@ -45,6 +47,18 @@ public class MainForm {
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
+            }
+        });
+        // chamando o frame do pedido
+        pedidoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    // instanciando o JFrame
+                    JFrame frame = new JFrame("Pedido");
+                    frame.setContentPane(new PedidoForm().PedidoJPanel);
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.pack();
+                    frame.setVisible(true);
             }
         });
     }
