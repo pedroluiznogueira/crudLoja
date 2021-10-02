@@ -9,9 +9,28 @@
 ![DiagramaUML](/img/diagrama-classes-2.jpeg?raw=true "DiagramaUML")
 
 
-### GUI Produto
+### GUIs
+
+## Menu
+
+1.
+![GUIMenu](/img/menuLojinha.jpeg?raw=true "GUIMenu")
 
 
+## Produto
+
+1.
 ![GUIProduto](/img/gui-produto.png?raw=true "GUIProduto")
 
+2.
+![GUIProduto](/img/produtoLojinha.jpeg?raw=true "GUIProduto")
 
+## Cliente
+
+1.
+![GUIICliente](/img/clienteLojinha.jpeg?raw=true "GUICliente")
+
+## Pedido
+
+1.
+![GUIPedido](/img/pedidoLojinha.jpeg?raw=true "GUIPedido")
