@@ -13,7 +13,7 @@ public class PedidoForm {
     private JButton excluirButton;
     private JButton consultarButton;
     private JButton atualizarButton;
-    private JTextField clienteInput;
+    private JTextField cpfInput;
 
     PedidoDAO pedidoDao = new PedidoDAO();
 
@@ -27,7 +27,7 @@ public class PedidoForm {
                 pedido.setFormaPagamento(formaPagamentoInput.getText());
 
                 Cliente cliente = new Cliente();
-                cliente.setNome(clienteInput.getText());
+                cliente.setCpf(cpfInput.getText());
 
                 try {
                     pedidoDao.incluirPedido(pedido, cliente);

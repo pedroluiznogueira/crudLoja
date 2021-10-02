@@ -23,8 +23,8 @@ public class PedidoDAO extends LojaDAO {
         Connection conexao = this.conectarBanco();
 
         // procura no banco de dados pelo id do cliente que fez o pedido
-        PreparedStatement prepStatementId = conexao.prepareStatement("select id from cliente where nome = ?");
-        prepStatementId.setString(1, cliente.getNome());
+        PreparedStatement prepStatementId = conexao.prepareStatement("select id from cliente where cpf = ?");
+        prepStatementId.setString(1, cliente.getCpf());
         ResultSet dadosId = prepStatementId.executeQuery();
 
         while (dadosId.next()) {
